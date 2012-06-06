@@ -6,8 +6,8 @@ define(function() {
   var dimensions = {height: 100, width: 100};
 
   var transformGameCoordsToCanvasCoords = function(gameCoords) {
-      var cellWidth = canvas.width / dimensions.width;
-      var cellHeight = canvas.height / dimensions.height;
+      var cellWidth = Math.floor(canvas.width / dimensions.width);
+      var cellHeight = Math.floor(canvas.height / dimensions.height);
       var left = gameCoords.x * cellWidth;
       var top = gameCoords.y * cellHeight;
 
@@ -27,12 +27,19 @@ define(function() {
     drawCellAt: function(coords) {
       var c = transformGameCoordsToCanvasCoords(coords);
 
-      context.fillStyle = "rgb(200, 34, 23)";
-      context.fillRect(c.left, c.top, c.width, c.height);
+      console.log("drawing");
+      console.debug(c);
+
+      context.fillStyle = "#FF0000";
+      context.fillRect(c.left, c.top, c.width-1, c.height-1);
     },
 
     clearCellAt: function(coords) {
       var c = transformGameCoordsToCanvasCoords(coords);
+
+      console.log("clearing");
+      console.debug(c);
+
       context.clearRect(c.left, c.top, c.width, c.height);
     }
   };
