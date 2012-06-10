@@ -4,7 +4,7 @@ require(["engine"], function(engine) {
     var view, board, fakeSetInterval, fakeClearInterval, intervalActive;
 
     beforeEach(function() {
-      view = jasmine.createSpyObj('view', ['clear', 'drawCells']);
+      view = jasmine.createSpyObj('view', ['clear', 'renderBoard']);
       board = jasmine.createSpyObj('board', ['update']);
 
       jasmine.Clock.useMock();
@@ -25,6 +25,10 @@ require(["engine"], function(engine) {
 
     it("should update the board", function() {
       expect(board.update).toHaveBeenCalled();
+    });
+
+    it("should tell view to render board", function() {
+      expect(view.renderBoard).toHaveBeenCalledWith(board);
     });
 
   });

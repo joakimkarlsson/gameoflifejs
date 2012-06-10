@@ -12,10 +12,7 @@ define(function() {
       setInterval(function() {
         view.clear();
         board.update();
-
-//        board.liveCells().forEach(function(cell) {
-//          view.drawCellAt({x: cell.x, y: cell.y, color: "#32546b"});
-//        });
+        view.renderBoard(board);
       }, 500);
     }
   };
