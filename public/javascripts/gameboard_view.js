@@ -26,10 +26,10 @@ define(function() {
       dimensions_.height = params.height;
     },
 
-    drawCellAt: function(coords) {
-      var c = transformGameCoordsToCanvasCoords(coords);
+    drawCellAt: function(params) {
+      var c = transformGameCoordsToCanvasCoords({x: params.x, y: params.y});
 
-      context_.fillStyle = "#FF0000";
+      context_.fillStyle = params.color || "#FF0000";
       context_.fillRect(c.left+1, c.top+1, c.width-2, c.height-2);
     },
 
