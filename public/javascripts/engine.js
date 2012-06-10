@@ -14,7 +14,7 @@ define(function() {
         board.liveCells().forEach(function(cell) {
           view.drawCellAt({x: cell.x, y: cell.y, color: "#32546b"});
         });
-      });
+      }, 500);
     }
   };
 });

@@ -1,12 +1,12 @@
-require(["gameboard_view", "gameboard", "game_engine"], function(view, gameboard, engine) {
+require(["view", "board", "engine"], function(view, board, engine) {
   
   var canvas = document.getElementById("canvas");
   view.init(canvas);
 
-  gameboard.setDimensions({width: 30, height: 20});
+  board.setDimensions({width: 30, height: 20});
   view.setDimensions({width: 30, height: 20});
 
-  engine.init({view: view, board: gameboard});
+  engine.init({view: view, board: board});
   engine.start();
 
   
