@@ -1,8 +1,6 @@
 define(function() {
   var context_, canvasWidth_, canvasHeight_;
 
-  var dimensions_ = {height: 100, width: 100};
-
   var transformGameCoordsToCanvasCoords = function(gameCoords) {
     var cellWidth = Math.floor(canvasWidth_ / gameCoords.width);
     var cellHeight = Math.floor(canvasHeight_ / gameCoords.height);

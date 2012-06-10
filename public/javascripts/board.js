@@ -1,15 +1,27 @@
 define(function() {
-  var dimensions_;
+  var dimensions_, liveCells_;
 
   return {
-    setDimensions: function(dim) {
-      dimensions_ = dim;
+    init: function(params) {
+            dimensions_ = {
+              width: params.width,
+              height: params.height
+            };
+
+            liveCells_ = [];
     },
 
-    liveCells: function() {
-      var x = Math.floor(Math.random() * dimensions_.width);
-      var y = Math.floor(Math.random() * dimensions_.height);
-      return [{x: x, y: y}];
-    }
+    update: function() {
+            },
+
+    setCells: function(cells) {
+                liveCells_ = cells;
+              },
+
+    forEachCell: function(callback) {
+                   liveCells_.forEach(function(cell) {
+                     callback({x: cell.x, y: cell.y, width: dimensions_.width, height: dimensions_.height});
+                   });
+                 }
   };
 });

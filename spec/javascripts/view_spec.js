@@ -1,5 +1,5 @@
 require(["view"], function(view) {
-  describe("view", function() {
+  describe("a view with size (100, 100) and board dimensions (10, 10)", function() {
     var board, coordTransformer;
 
     beforeEach(function() {
