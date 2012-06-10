@@ -1,11 +1,11 @@
 define(function() {
-  var context_, canvas_;
+  var context_, canvasWidth_, canvasHeight_;
 
   var dimensions_ = {height: 100, width: 100};
 
   var transformGameCoordsToCanvasCoords = function(gameCoords) {
-    var cellWidth = Math.floor(canvas.width / dimensions_.width);
-    var cellHeight = Math.floor(canvas.height / dimensions_.height);
+    var cellWidth = Math.floor(canvasWidth_ / gameCoords.width);
+    var cellHeight = Math.floor(canvasHeight_ / gameCoords.height);
     var left = gameCoords.x * cellWidth;
     var top = gameCoords.y * cellHeight;
 
@@ -13,7 +13,7 @@ define(function() {
   };
 
   var drawCellAt = function(params) {
-    var c = transformGameCoordsToCanvasCoords({x: params.x, y: params.y});
+    var c = transformGameCoordsToCanvasCoords(params);
 
     context_.fillStyle = params.color || "#FF0000";
     context_.fillRect(c.left, c.top, c.width, c.height);
@@ -21,18 +21,14 @@ define(function() {
 
 
       return {
-        init: function(canvas) {
-                canvas_ = canvas;
-                context_ = canvas.getContext("2d");
+        init: function(params) {
+                canvasWidth_ = params.canvasWidth;
+                canvasHeight_ = params.canvasHeight;
+                context_ = params.context;  //canvas.getContext("2d");
               },
         clear: function() {
-                 context_.clearRect(0, 0, canvas_.width, canvas_.height);
+                 context_.clearRect(0, 0, canvasWidth_, canvasHeight_);
                },
-
-        setDimensions: function(params) {
-                         dimensions_.width = params.width;
-                         dimensions_.height = params.height;
-                       },
 
         renderBoard: function(board) {
                        board.forEachCell(drawCellAt);
