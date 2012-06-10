@@ -1,14 +1,15 @@
-require(["gameboard_view"], function(gameboard) {
+require(["gameboard_view", "gameboard", "game_engine"], function(view, gameboard, engine) {
   
   var canvas = document.getElementById("canvas");
-  gameboard.init(canvas);
+  view.init(canvas);
+
+  gameboard.setDimensions({width: 30, height: 20});
+  view.setDimensions({width: 30, height: 20});
+
+  engine.init({view: view, board: gameboard});
+  engine.start();
 
   
-  gameboard.setDimensions({width: 30, height: 20});
-  gameboard.clear();
-
-
-  gameboard.drawCellAt({x: 2, y: 15, color: "#32546b"});
-  gameboard.clearCellAt({x: 3, y: 23});
+  //view.clearCellAt({x: 3, y: 23});
 
 });
