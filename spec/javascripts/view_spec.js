@@ -22,9 +22,9 @@ require(["view"], function(view) {
       expect(board.forEachCell).toHaveBeenCalled();
     });
 
-    it("should draw a rectangle at position (30, 50) with width and height = (10, 10)", function() {
+    it("should draw a rectangle at position (31, 51) with width and height = (9, 9)", function() {
       view.renderBoard(board);
-      expect(context.fillRect).toHaveBeenCalledWith(30, 50, 10, 10);
+      expect(context.fillRect).toHaveBeenCalledWith(31, 51, 9, 9);
     });
   });
 });

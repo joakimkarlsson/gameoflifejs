@@ -14,22 +14,22 @@ define(function() {
     var c = transformGameCoordsToCanvasCoords(params);
 
     context_.fillStyle = params.color || "#FF0000";
-    context_.fillRect(c.left, c.top, c.width, c.height);
+    context_.fillRect(c.left+1, c.top+1, c.width-1, c.height-1);
   };
 
 
-      return {
-        init: function(params) {
-                canvasWidth_ = params.canvasWidth;
-                canvasHeight_ = params.canvasHeight;
-                context_ = params.context;  //canvas.getContext("2d");
-              },
-        clear: function() {
-                 context_.clearRect(0, 0, canvasWidth_, canvasHeight_);
-               },
+  return {
+    init: function(params) {
+            canvasWidth_ = params.canvasWidth;
+            canvasHeight_ = params.canvasHeight;
+            context_ = params.context;  //canvas.getContext("2d");
+          },
+    clear: function() {
+             context_.clearRect(0, 0, canvasWidth_, canvasHeight_);
+           },
 
-        renderBoard: function(board) {
-                       board.forEachCell(drawCellAt);
-                     }
-      };
+    renderBoard: function(board) {
+                   board.forEachCell(drawCellAt);
+                 }
+  };
 });
