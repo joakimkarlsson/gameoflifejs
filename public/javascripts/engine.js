@@ -1,5 +1,6 @@
 define(function() {
-  var view, board;
+  var view, 
+      board;
 
   return {
     init: function(params) {
@@ -10,10 +11,11 @@ define(function() {
     start: function() {
       setInterval(function() {
         view.clear();
+        board.update();
 
-        board.liveCells().forEach(function(cell) {
-          view.drawCellAt({x: cell.x, y: cell.y, color: "#32546b"});
-        });
+//        board.liveCells().forEach(function(cell) {
+//          view.drawCellAt({x: cell.x, y: cell.y, color: "#32546b"});
+//        });
       }, 500);
     }
   };
